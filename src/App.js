@@ -46,18 +46,16 @@ class App extends Component {
     });
   };
 
-  addModel = event =>
+  addModel = () =>
     // console.log("click"); // works!
     // console.log(event); // works. gets event
     // console.log(this.data); // works! gives array with objects
 
     /* I checked if I should use "event.preventDefault()" but after some experiments and checking MDN web dogs which says "calling preventDefault() for a non-cancelable event, such as one dispatched via EventTarget.dispatchEvent(), without specifying cancelable: true  has no effect." - I don't use event.preventDefault()*/
 
-    this.data.map(model => {
-      // console.log(model) // works!
-      // console.log(model.name) // works!
-
-      if (model.name === this.state.name) {
+    this.data
+      .filter(computer => computer.name === this.state.name)
+      .map(model => {
         const action = {
           type: "ADD_MODEL",
           payload: {
@@ -67,9 +65,8 @@ class App extends Component {
             origin: model.origin
           }
         };
-        this.props.dispatch(action); // works. Shows in the Redux Dev tools
-      }
-    });
+        this.props.dispatch(action); // works. Shows up in the Redux Dev tools
+      });
 
   render() {
     // console.log(this.props); // check dispatch when App is a class - works!

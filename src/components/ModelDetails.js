@@ -9,7 +9,7 @@ ModelDetails.propTypes = {
 };
 
 export default function ModelDetails(props) {
-  console.log("MODEL DETAIL PROPS", props); // works!
+  // console.log("MODEL DETAIL PROPS", props); // works!
   // console.log(props.computerModels); // gets the state
 
   const { name, manufacturer, year, origin } = props;
