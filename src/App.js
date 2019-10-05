@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import ModelDetails from "./components/ModelDetails";
 
 class App extends Component {
-  // console.log(props); // check dispatch when App was a function - works!
-
   data = [
     {
       name: "Ivel Z3",
@@ -33,26 +31,19 @@ class App extends Component {
     }
   ];
 
-  // Local State - stores currently selected model
+  // Local State - stores currently selected model if added by clicking on the button "Add"
   state = {};
 
   // Event Handlers
+  // Tracks changes from the drop-down-list
   updateSelection = event => {
-    // console.log("I Changed"); // works
-    // console.log(event.target.value); // works
-
     this.setState({
       name: event.target.value
     });
   };
 
+  // Tracks clicks on the button "Add"
   addModel = () =>
-    // console.log("click"); // works!
-    // console.log(event); // works. gets event
-    // console.log(this.data); // works! gives array with objects
-
-    /* I checked if I should use "event.preventDefault()" but after some experiments and checking MDN web dogs which says "calling preventDefault() for a non-cancelable event, such as one dispatched via EventTarget.dispatchEvent(), without specifying cancelable: true  has no effect." - I don't use event.preventDefault()*/
-
     this.data
       .filter(computer => computer.name === this.state.name)
       .map(model => {
@@ -65,43 +56,32 @@ class App extends Component {
             origin: model.origin
           }
         };
-        this.props.dispatch(action); // works. Shows up in the Redux Dev tools
+        this.props.dispatch(action);
       });
 
   render() {
-    // console.log(this.props); // check dispatch when App is a class - works!
-    // console.log(this.props); // check if computerModels is a prop - works!
-
-    // Generates an unique identifier - use in key
+    // Generates an unique identifier - I used this to create the keys
     const uuidv4 = require("uuid/v4");
 
     return (
       <div className="App">
-        <h1>Ancient Computer Models</h1>
+        <h1>Computer Models</h1>
         {this.props.computerModels.map(computer => {
           return (
             <ModelDetails
               key={uuidv4()}
-              // name={8} check if PropTypes works - Yes!
               name={computer.name}
-              //manufacturer={8} check if PropTypes works - Yes!
               manufacturer={computer.manufacturer}
-              //year={"Hello"} check if PropTypes works - Yes!
               year={computer.year}
-              //origin={true} check if PropTypes works - Yes!
               origin={computer.origin}
             />
           );
         })}
         <select value={this.state.name} onChange={this.updateSelection}>
-          {/*should this also be in the map? CHECK LATER}*/}
           <option key={uuidv4()} value="">
             -- pick a model --
           </option>
           {this.data.map(computer => {
-            // console.log(computer) // gives an object of a computer model
-            // console.log("NAME", computer.name); // gives computer name
-            // console.log("YEAR", computer.year); // gives year of the computer model
             return (
               <option key={uuidv4()} value={computer.name}>
                 {computer.name} ({computer.year})
