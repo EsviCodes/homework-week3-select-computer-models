@@ -14,10 +14,18 @@ export default function ModelDetails(props) {
   return (
     <div>
       <ul>
-        <li>Name: {name}</li>
-        <li>Manufacturer: {manufacturer}</li>
-        <li>Year: {year}</li>
-        <li>Origin: {origin}</li>
+        <li>
+          <strong>Name</strong>: {name}
+        </li>
+        <li>
+          <strong>Manufacturer</strong>: {manufacturer}
+        </li>
+        <li>
+          <strong>Year</strong>: {year}
+        </li>
+        <li>
+          <strong>Origin</strong>: {origin}
+        </li>
       </ul>
     </div>
   );
