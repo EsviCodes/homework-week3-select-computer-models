@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
+import ModelDetails from "./components/ModelDetails";
 
 // SEE IF YOU CAN PREVENT DEFAULT WHILE HANDLING EVENTS!
 
@@ -37,16 +38,12 @@ class App extends Component {
   // Local State - stores currently selected model
   state = {};
 
-  // handleSubmit(event) {
-  //   // whenever the value of the drop-down changes we run a method called updateSelection
-  //   console.log("I've been clicked!"); // works
-  //   event.preventDefault();
-  // }
-
   // Event Handlers
   updateSelection = event => {
     // console.log("I Changed"); // works
     // console.log(event.target.value); // works
+    console.log(event);
+    event.preventDefault();
 
     // CHECK-this overrides the name property. Should uses like this or should it create an array of objects?
     this.setState({
@@ -88,12 +85,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Ancient Computer Models</h1>
-
+        {this.props.computerModels.map(computer => {
+          return <ModelDetails key={uuidv4()} computerModels={computer} />;
+        })}
         <select onChange={this.updateSelection}>
           {/*should this also be in the map? CHECK LATER}*/}
-          <option key={uuidv4()} value="">
-            -- pick a model --
-          </option>{" "}
+          <option value="">-- pick a model --</option>
           {this.data.map(computer => {
             // console.log(computer) // gives an object of a computer model
             // console.log("NAME", computer.name); // gives computer name
