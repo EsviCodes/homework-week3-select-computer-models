@@ -56,7 +56,7 @@ class App extends Component {
             origin: model.origin
           }
         };
-        this.props.dispatch(action);
+        return this.props.dispatch(action);
       });
 
   render() {
