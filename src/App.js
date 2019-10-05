@@ -42,13 +42,14 @@ class App extends Component {
   updateSelection = event => {
     // console.log("I Changed"); // works
     // console.log(event.target.value); // works
-    console.log(event);
+
     event.preventDefault();
 
     // CHECK-this overrides the name property. Should uses like this or should it create an array of objects?
     this.setState({
       name: event.target.value
     });
+    event.preventDefault();
   };
 
   addModel = () =>
@@ -88,9 +89,11 @@ class App extends Component {
         {this.props.computerModels.map(computer => {
           return <ModelDetails key={uuidv4()} computerModels={computer} />;
         })}
-        <select onChange={this.updateSelection}>
+        <select value={this.state.name} onChange={this.updateSelection}>
           {/*should this also be in the map? CHECK LATER}*/}
-          <option value="">-- pick a model --</option>
+          <option key={uuidv4()} value="">
+            -- pick a model --
+          </option>
           {this.data.map(computer => {
             // console.log(computer) // gives an object of a computer model
             // console.log("NAME", computer.name); // gives computer name
