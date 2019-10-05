@@ -1,21 +1,52 @@
+body {
+  background-color: black;
+  text-align: center;
+  margin-top: 8%;
+  font-family: "Share Tech Mono", monospace;
+}
+
 .App {
+  background-color: black;
+  color: limegreen;
 }
 
-.App-logo {
-  height: 40vmin;
+h1 {
+  font-size: 70px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+ul {
+  margin-top: 50px;
+}
+
+li {
+  list-style-type: none;
+  font-size: 25px;
+}
+
+select {
+  background-color: limegreen;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 5px solid limegreen;
+}
+
+button {
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 5px solid limegreen;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  margin: 50px 10px;
+  padding: 3px 20px;
+}
+button:hover {
+  background-color: limegreen;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+footer {
+  margin: 5%;
 }

@@ -65,7 +65,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Computer Models</h1>
+        <h1>Vintage Computer Models</h1>
         {this.props.computerModels.map(computer => {
           return (
             <ModelDetails
@@ -90,6 +90,7 @@ class App extends Component {
           })}
         </select>
         <button onClick={this.addModel}>Add</button>
+        <footer>Made by Esther Vis</footer>
       </div>
     );
   }
