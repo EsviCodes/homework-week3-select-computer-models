@@ -1,9 +1,25 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 
-class App extends React.Component {
+class App extends Component {
   // console.log(props); // check dispatch when App was a function - works!
+
+  // Local State
+  state = {};
+
+  // handleSubmit(event) {
+  //   // whenever the value of the drop-down changes we run a method called updateSelection
+  //   console.log("I've been clicked!"); // works
+  //   event.preventDefault();
+  // }
+
+  // Event Handler
+  updateSelection = event => {
+    console.log("I Changed"); // works
+    console.log(event.target.value); // works
+    this.setState({ name: event.target.value });
+  };
 
   render() {
     // console.log(this.props); // check dispatch when App is a class - works!
@@ -40,7 +56,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Ancient Computer Models</h1>
-        <select>
+
+        <select onChange={this.updateSelection}>
           {/*should this also be in the map? CHECK LATER}*/}
           <option key={uuidv4()} value="">
             -- pick a model --
