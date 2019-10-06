@@ -43,7 +43,7 @@ class App extends Component {
   };
 
   // Tracks clicks on the button "Add"
-  addModel = () =>
+  addModel = () => {
     this.data
       .filter(computer => computer.name === this.state.name)
       .map(model => {
@@ -58,6 +58,8 @@ class App extends Component {
         };
         return this.props.dispatch(action);
       });
+    this.setState({ name: "" });
+  };
 
   render() {
     // Generates an unique identifier - I used this to create the keys
